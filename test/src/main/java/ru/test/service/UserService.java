@@ -24,14 +24,14 @@ public class UserService {
     }
 
     public User save(User user) {
+        user.setId(null);
         return userRepository.save(user);
     }
 
     public User update(Long id, User user) {
         User find = findById(id);
-        find.setFirstName(user.getFirstName());
-        find.setLastName(user.getLastName());
-        return save(find);
+        user.setId(find.getId());
+        return save(user);
     }
 
     public void deleteById(Long id) {
