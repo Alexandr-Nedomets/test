@@ -2,7 +2,7 @@ package ru.test.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.test.model.User;
+import ru.test.entity.User;
 import ru.test.repository.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
