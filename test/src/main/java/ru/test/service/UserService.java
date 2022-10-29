@@ -2,6 +2,7 @@ package ru.test.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.test.entity.User;
 import ru.test.repository.UserRepository;
 
@@ -23,15 +24,17 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Entity not found by id = " + id));
     }
 
+    @Transactional
     public User save(User user) {
         user.setId(null);
         return userRepository.save(user);
     }
 
+    @Transactional
     public User update(Long id, User user) {
         User find = findById(id);
         user.setId(find.getId());
-        return save(user);
+        return userRepository.save(user);
     }
 
     public void deleteById(Long id) {
